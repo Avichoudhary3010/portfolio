@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Avi Choudhary</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .resume-container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 3rem;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-lg);
+            border-radius: 15px;
+        }
+
+        .resume-header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .resume-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .resume-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .resume-contact-item i {
+            color: var(--primary-color);
+        }
+
+        .resume-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .resume-section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .resume-section-title i {
+            font-size: 1.5rem;
+        }
+
+        .resume-objective {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .education-item-resume {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .education-item-resume h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item-resume h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item-resume p {
+            color: var(--text-light);
+            margin: 0.25rem 0;
+        }
+
+        .skills-grid-resume {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category-resume {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .skill-category-resume h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li::before {
+            content: "▹";
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .project-item-resume {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .project-item-resume h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-item-resume p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .certification-item-resume {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .certification-item-resume i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .certification-item-resume div {
+            flex: 1;
+        }
+
+        .certification-item-resume h4 {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-item-resume p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+            .resume-container {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 80px auto 30px;
+                padding: 1.5rem;
+            }
+            .resume-name {
+                font-size: 2rem;
+            }
+            .resume-contact {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="resume-header">
+            <h1 class="resume-name">Avi Choudhary</h1>
+            <div class="resume-contact">
+                <div class="resume-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kheri Karmu, Shamli 247776</span>
+                </div>
+                <div class="resume-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:avic583@gmail.com" style="color: inherit; text-decoration: none;">avic583@gmail.com</a>
+                </div>
+                <div class="resume-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+917417074233" style="color: inherit; text-decoration: none;">+91 7417074233</a>
+                </div>
+                <div class="resume-contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Objective -->
+        <div class="resume-section">
+            <h2 class="resume-section-title">
+                <i class="fas fa-bullseye"></i>
+                Career Objective
+            </h2>
+            <p class="resume-objective">
+                To leverage my engineering expertise and strong proficiency in Artificial Intelligence tools to design, develop, and optimize innovative solutions that enhance efficiency, decision-making, and automation. I aim to contribute to forward-thinking organizations by integrating AI-driven insights with engineering principles, driving impactful projects that solve complex problems while continuously advancing my technical and analytical skills.
+            </p>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+            <h2 class="resume-section-title">
+                <i class="fas fa-graduation-cap"></i>
+                Education
+            </h2>
+            <div class="education-item-resume">
+                <h3>B.Tech in CSIT</h3>
+                <h4>KIET Group Of Institutions, Muradnagar, Ghaziabad</h4>
+                <p><strong>Duration:</strong> 2023 - 2027</p>
+                <p><strong>SGPA:</strong> Sem1 - 7.41, Sem2 - 8.32, Sem3 - 7.46</p>
+            </div>
+            <div class="education-item-resume">
+                <h3>10+2</h3>
+                <h4>Silver Bells Public, Shamli</h4>
+                <p><strong>Duration:</strong> 2022 - 2023</p>
+                <p><strong>Percentage:</strong> 80.2%</p>
+            </div>
+            <div class="education-item-resume">
+                <h3>10th</h3>
+                <h4>St Francis School, Shamli</h4>
+                <p><strong>Duration:</strong> 2020 - 2021</p>
+                <p><strong>Percentage:</strong> 87.5%</p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="resume-section">
+            <h2 class="resume-section-title">
+                <i class="fas fa-code"></i>
+                Technical Skills
+            </h2>
+            <div class="skills-grid-resume">
+                <div class="skill-category-resume">
+                    <h4>Programming Languages</h4>
+                    <ul class="skill-list">
+                        <li>C++</li>
+                        <li>C</li>
+                        <li>Python</li>
+                        <li>HTML/CSS</li>
+                        <li>Java</li>
+                    </ul>
+                </div>
+                <div class="skill-category-resume">
+                    <h4>Frameworks & Tools</h4>
+                    <ul class="skill-list">
+                        <li>OpenCV</li>
+                        <li>Spring Boot</li>
+                    </ul>
+                </div>
+                <div class="skill-category-resume">
+                    <h4>Database</h4>
+                    <ul class="skill-list">
+                        <li>PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category-resume">
+                    <h4>Developer Tools</h4>
+                    <ul class="skill-list">
+                        <li>VS Code</li>
+                        <li>GitHub</li>
+                        <li>Jupyter</li>
+                    </ul>
+                </div>
+                <div class="skill-category-resume">
+                    <h4>Soft Skills</h4>
+                    <ul class="skill-list">
+                        <li>Communication (Public Speaker)</li>
+                        <li>Teamwork (Operation Team Coordinator)</li>
+                        <li>Adaptability</li>
+                        <li>Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="resume-section">
+            <h2 class="resume-section-title">
+                <i class="fas fa-project-diagram"></i>
+                Projects
+            </h2>
+            <div class="project-item-resume">
+                <h3>DevConnector - A Social Network for Developers</h3>
+                <p>DevConnector is a full-stack social networking platform built specifically for developers. It allows users to create a profile, share posts, connect with other developers, and engage in discussions.</p>
+            </div>
+            <div class="project-item-resume">
+                <h3>developerFolio - Personal Portfolio Website</h3>
+                <p>A beautiful and customizable portfolio website for developers to showcase projects, experience, and skills.</p>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="resume-section">
+            <h2 class="resume-section-title">
+                <i class="fas fa-certificate"></i>
+                Certifications
+            </h2>
+            <div class="certification-item-resume">
+                <i class="fas fa-certificate"></i>
+                <div>
+                    <h4>Electrical Vehicle Workshop</h4>
+                    <p>KIET Group Of Institutions • 2025</p>
+                </div>
+            </div>
+            <div class="certification-item-resume">
+                <i class="fas fa-certificate"></i>
+                <div>
+                    <h4>Smoke Detection Working Model</h4>
+                    <p>Innotech • 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()" title="Print Resume">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // Apply theme from localStorage
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', currentTheme);
+    </script>
+</body>
+</html>
+
